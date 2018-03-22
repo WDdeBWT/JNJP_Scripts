@@ -112,8 +112,7 @@ class HtmlFilter:
                             print('----------↓ ' + str(i) + ' ↓----------')
                             print(file_name + "  " + page_title.strip())
                             w.write('----------↓ ' + str(i) + ' ↓----------\n')
-                            w.write(
-                                file_name + "  " + page_title.strip() + '\n')
+                            w.write(file_name + "  " + page_title.strip() + '\n')
                 except Exception as e:
                     print(e)
                     continue

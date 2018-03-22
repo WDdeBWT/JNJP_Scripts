@@ -16,8 +16,15 @@ class Temp:
         self.source_path = 'C:\\Users\\baiwt\\Desktop\\'
         self.read_path = self.source_path + 'sample_200\\'
         self.write_path = self.source_path + 'result_200\\'
+        self.stop_words_list_path = self.source_path + 'stopWord_1.txt'
         self.pattern = re.compile(r"^[A-Za-z0-9\s+\.\!\/_,$%^*(+\"\']+|[+——！，。？、~@#￥%……&*（）]+$")
         self.stop_words_list = []
+        self.stop_words_list_ge = (
+            line.strip()
+            for line in open(self.stop_words_list_path, 'r',
+                             encoding='UTF-8').readlines())
+        for wd in self.stop_words_list_ge:
+            self.stop_words_list.append(wd)
 
     def Statistic_word_frequency(self):
         i = 0
@@ -26,7 +33,7 @@ class Temp:
         file_list = os.listdir(self.read_path)
         for file_name in file_list:
             i += 1
-            print(i)
+            print('---------- ' + str(i) + ' ----------')
             try:
                 word_list = []
                 file_path = os.path.join(self.read_path, file_name)
@@ -70,7 +77,7 @@ class Temp:
         file_list = os.listdir(self.read_path)
         for file_name in file_list:
             i += 1
-            print(i)
+            print('---------- ' + str(i) + ' ----------')
             word_list = []
             file_path = os.path.join(self.read_path, file_name)
             with open(file_path, 'r', encoding = 'utf-8') as r:
@@ -110,6 +117,7 @@ class Temp:
         return True
 
 te = Temp()
+te.Statistic_word_frequency()
 te.Statistic_word_frequency_1()
 
 
