@@ -13,12 +13,14 @@ import bs4
 from bs4 import BeautifulSoup
 import chardet
 
+import win_unicode_console
+win_unicode_console.enable()
 
 class HtmlFilter:
     def __init__(self):
         self.source_path = 'C:\\Users\\baiwt\\Desktop\\'
-        self.read_path = self.source_path + 'result_39.108.112.9_bjx\\'
-        self.write_path = self.source_path + 'result\\'
+        self.read_path = self.source_path + 'demo60_html\\'
+        self.write_path = self.source_path + 'demo60_txt\\'
         self.keyword_list_path = self.source_path + 'keyword_list.txt'
         self.stopword_list_path = self.source_path + 'stopword_list.txt'
         self.contentfilter_list_path = self.source_path + 'contentfilter_list.txt'
@@ -166,7 +168,7 @@ class HtmlFilter:
                 for string in soup.stripped_strings:
                     if (self.string_judge(string.strip())):
                         write_list.append(string.strip() + '\n')
-                new_file_path = os.path.join(self.write_path, file_name[:-5] + '.txt')
+                new_file_path = os.path.join(self.write_path, file_name[:-5].replace('\xa0', '') + '.txt')
                 with open(new_file_path, 'w', encoding = 'utf-8') as w:
                     w.writelines(write_list)
                 i += 1

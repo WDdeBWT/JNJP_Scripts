@@ -9,6 +9,9 @@ import time
 
 from aip import AipNlp
 
+import win_unicode_console
+win_unicode_console.enable()
+
 class SimilarityCalculation:
     def __init__(self):
         self.source_path = 'C:\\Users\\baiwt\\Desktop\\'
