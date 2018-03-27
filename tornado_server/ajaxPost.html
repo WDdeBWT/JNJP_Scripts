@@ -7,9 +7,9 @@
      <title>Document</title>
      <script src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
      <script type="text/javascript">
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://segmentfault.com/u/trigkit4/",true);
-        xhr.send();
+        // var xhr = new XMLHttpRequest();
+        // xhr.open("GET", "http://segmentfault.com/u/trigkit4/",true);
+        // xhr.send();
     </script>
      <script type="text/javascript">
 
@@ -85,10 +85,10 @@
             $("#test").click(function(){
                 console.log("Start AJAX");
                 var data = {
-                    "slogan":"我们都惠吹"
+                    "key_string":"我们都惠吹"
                 };
                 // ajaxRequestGet("http://127.0.0.1:8888/test");
-                ajaxRequestPostType("http://127.0.0.1:8888/test", 'POST', data)
+                ajaxRequestPostType("http://127.0.0.1:8086/ajax_search", 'POST', data)
             })
             
         });
