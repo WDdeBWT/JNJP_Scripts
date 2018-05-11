@@ -1,0 +1,234 @@
+.example_btn .example_btn_img1{
+    width: 130px;
+	height: 36px;
+    background-image: url(../img/测试用例1.png);
+    /* background-color: blue; */
+    position: absolute;
+    left: 80%;
+    top: 15%;
+
+}
+
+.example_btn .example_btn_img1:hover{
+	background-position: -130px 0px;
+}
+
+.example_btn .example_btn_img2{
+    width: 130px;
+	height: 36px;
+    background-image: url(../img/测试用例2.png);
+    /* background-color: blue; */
+    position: absolute;
+    left: 80%;
+    top: 23%;
+
+}
+
+.example_btn .example_btn_img2:hover{
+	background-position: -130px 0px;
+}
+
+.use_exp_btn .exp_search{
+    width: 130px;
+    height: 36px;
+    margin-bottom: 10px;
+    background-image: url(../img/测试此文本.png);
+}
+
+.use_exp_btn .exp_search:hover{
+	background-position: -130px 0px;
+}
+
+#content{
+    width: 1200px;
+    /* width: 100%; */
+    /* height: 800px; */
+    /* background-color: blue; */
+}
+
+#content_top{
+    width: 100%;
+    /* height: 300px; */
+    /* background-color: aqua; */
+}
+
+#content_top_left{
+    height: 100%;
+    width: 300px;
+    /* width:27%; */
+    /* background-color: azure; */
+    float: left;
+}
+
+#content_top_left #caculate_result{
+    /* margin-top: 40px; */
+    /* margin-left: 90px; */
+    margin-top: 15%;
+    margin-left: 28%;
+}
+
+#caculate_result .content_title{
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+#content_top_mid{
+    height: 100%;
+    width: 300px;
+    /* width: 27%; */
+    /* background-color: blueviolet; */
+    float: left;
+}
+
+#content_top_mid_imgBox{
+    margin-left: 30px;
+}
+
+#content_top_right{
+    height: 100%;
+    width: 350px;
+    margin-right: 60px;
+    float: left;
+}
+
+#content_midTop{
+    width: 100%;
+    height: 200px;
+    /* background-color: burlywood; */
+    float: left;
+    
+}
+
+#content_midTop #content_midTop_table{
+    width: 1200px;
+    height: 100%;
+    margin-top: 30px;
+    margin-left: 5%;
+}
+
+#content_midTop #content_midTop_table td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+#content_mid{
+    /* margin-top: 30px; */
+    /* width: 100%; */
+    width: 1200px;
+    float: left;
+    /* height: 360px; */
+    /* background-color: chartreuse; */
+}
+
+#content_mid_left{
+    margin-top: 23px;
+    height: 100%;
+    width: 54%;
+    /* background-color: coral; */
+    margin-left: 4%;
+    float: left;
+}
+
+#content_mid_right{
+    margin-top: 3.5%;
+    margin-left: 2%;
+    width: 36%;
+    float: left;
+}
+
+#content_mid_bottom{
+    /* width: 100%; */
+    width: 1200px;
+    height: 350px;
+    float: left;
+}
+
+#content_mid_bottom #img_left{
+    float: left;
+    width: 33%;
+    padding-left: 5%;
+}
+
+#content_mid_bottom #img_mid{
+    float: left;
+    width: 33%;
+    /* padding-left: 30px; */
+}
+
+#content_mid_bottom #img_right{
+    width: 33%;
+    float: left;
+    /* padding-left: 30px; */
+}
+
+#content_bottom{
+    /* width: 100%; */
+    width: 1200px;
+    height: 50px;
+    float: left;
+    text-align: center;
+}
+
+#content_mid_bottom_BCD_top,#content_mid_bottom_BCD_mid,#content_mid_bottom_BCD_bottom{
+    width: 1200px;
+    /* height: 700px; */
+    float: left;
+}
+
+#content_mid_bottom_BCD_img_top,#content_mid_bottom_BCD_img_mid,#content_mid_bottom_BCD_img_bottom{
+    width: 1200px;
+    height: 320px;
+    margin-left: 120px;
+    float: left;
+}
+#content_mid_bottom_BCD_desc_top,#content_mid_bottom_BCD_desc_mid,#content_mid_bottom_BCD_desc_bottom{
+    float: left;
+}
+#content_mid_bottom_BCD_desc_top p,#content_mid_bottom_BCD_desc_mid p,#content_mid_bottom_BCD_desc_bottom p{
+    margin-left: 210px;
+}
+#content_mid_bottom_BCD_suggest_top,#content_mid_bottom_BCD_suggest_mid,#content_mid_bottom_BCD_suggest_bottom{
+    float: left;
+    width: 720px;
+    margin-bottom: 30px;
+    margin-left: 180px;
+}
+.content_mid_bottom_BCD_suggest_fix{
+    font-size: 14px;
+    font-weight: 600;
+}
+#bayes_title{
+    float: left;
+    margin-left: 80px;
+    font-size: 16px;
+    font-weight: 600;
+}
+/* .platform_title{
+    float: left;
+    margin-top: 100px;
+    margin-left: 390px;
+    font-size: 36px;
+    color: #5ec3f5;
+    text-shadow: antiquewhite;
+
+} */
+@media screen and (max-width: 560px) {
+    .example_btn .example_btn_img1,.example_btn .example_btn_img2{left: 60%;}
+}
+
+#content_bottom_bottom{
+    float: left;
+    width: 900px;
+    margin-left: 120px;
+}
+
+#content_bottom_bottom p{
+    text-indent: 2em;
+}
+
+#content_bottom_bottom .content_bottom_bottom_title{
+    font-size: 16px;
+    font-weight: 600;
+}
+

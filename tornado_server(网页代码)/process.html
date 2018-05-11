@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>处理流程介绍</title>
+	<link rel="stylesheet" type="text/css" href="static/css/cntl.css">
+	<link href="static/css/bootstrap.min.css" rel='stylesheet' type="text/css">
+	<link rel="stylesheet" href="static/css/zd-1.0.css">
+
+</head>
+<body  style="background: linear-gradient(#c7c8cf,#e8e8e9,#c7c8cf);">
+	<nav>
+        <!-- logo -->
+        <div class="nav-logo">
+            <a href="search"><img src="static/img/small_logo.png" alt=""></a>
+            <a href="search" class="nav-title">I-SAID</a>
+        </div>
+    
+        <!-- 控制menu -->
+        <div class="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    
+        <!-- 菜单 -->
+        <ul class="nav-list">
+            <!-- <li>
+                <a href="" class="active">首页<div class="carect"></div></a>
+                <ul class="menu">
+                    <li><a href="">不断学习</a></li>
+                    <li><a href="">不断进步</a></li>
+                </ul>
+            </li> -->
+            <li><a href="search">案例分析</a></li>
+            <li><a href="process" class="active">处理流程</a></li>
+            <li><a href="introduce2">项目介绍</a></li>
+        </ul>
+    </nav>
+
+	<div class="jq22-container">	
+		<div class="cntl" style="margin-top:0px;">
+			<span class="cntl-bar cntl-center">
+				<span class="cntl-bar-fill"></span>
+			</span>
+
+			<div class="cntl-states">
+
+				<div class="cntl-state">
+					<div class="cntl-content" style="margin-top:60px;width:100%;border-bottom: solid 0px;background: linear-gradient(#c7c8cf,#e8e8e9,#c7c8cf);">
+						<h3>数据分析流程总述</h3>
+						<p>科学的研究源自于科学的数据，科学的数据来源于有针对性的信息采集和信息处理。为了从宏观的角度研究垃圾焚烧发电“邻避”事件成因和转化路径，为决策者提供数据支持和决策参考，就需要采集过往“邻避”事件相关信息，清洗并结构化数据，建立知识库，并对数据进行科学的分析。所以，针对“邻避”事件成因和危机转化管理创新的数据分析研究一共包括以下三个主要步骤，“获得数据”、“数据清洗和预处理”以及“数据分析”。</p>
+					</div>
+					<!-- <div class="cntl-image"><img src="static/img/lczs.jpg"></div> -->
+					<!-- <div class="cntl-icon cntl-center">'01</div> -->
+				</div>
+				
+				<hr style="height:1px;border:none;border-top:3px ridge #009ABB;margin-top:20px;margin-bottom:45px;"/>
+
+				<div class="cntl-state">
+					<div class="cntl-content">
+						<h3>数据抓取</h3>
+						<p>网络爬虫是指按照既定规则，定向或不定向（通用）的自动爬取互联网上信息的程序。针对垃圾焚烧发电“邻避”事件在互联网上分布较为分散的特点，设计了通过链接标签在互联网上广泛爬取内容的通用爬虫。并针对爬虫的走向和抓取的内容进行了两重筛选，一是基于关键词表和停用词表的标题分词筛选，第二是通过针对篇章结构设计的HTML结构筛选算法进行筛选，最终获得了与研究相关度较高的重点页面的网页文件。
+						</p>
+					</div>
+
+					<div class="cntl-image"><img src="static/img/sjzq.jpg"></div>
+					<div class="cntl-icon cntl-center">'01</div>
+				</div>
+
+				<div class="cntl-state">
+					<div class="cntl-content">
+						<h3>数据清洗和预处理介</h3>
+						<p>数据清洗和预处理是指对数据进行筛选、校验以及一致化的过程，目的在于保证数据正确性，提高数据可用性。在本研究的数据清洗和预处理过程中，主要运用了自然语言处理（NLP）技术中的中文分词、词法相似度分析计算两项主要分析方法，并依据篇章层次结构和组成特点设计了一套正文提取算法。结合人工辅助分析，通过网页正文提取，关键词分析，词义相似度计算三个步骤，得到了可用于进一步数据分析的高可用度数据。
+						</p>
+					</div>
+
+					<div class="cntl-image"><img src="static/img/sjqx.jpg"></div>
+					<div class="cntl-icon cntl-center">'02</div>
+				</div>
+
+				<div class="cntl-state">
+					<div class="cntl-content">
+						<h3>数据分析</h3>
+						<p>数据分析是指对于采集获得的大量数据通过适当的统计分析方法，提取关键信息并形成有实用价值结论的过程。在本研究的数据分析过程当中，主要使用了数据矢量化，贝叶斯网络模型和皮尔逊相关系数法四项统计分析方法进行处理。数据矢量化是将经过清洗和相似替换的元数据按照关键词表和对应的权重进行矢量化的过程，使得文本数据具有数学和统计意义，并据此通过K均值法进行聚类。针对聚类后不同类型的数据（案例），通过贝叶斯网络研究“邻避”事件的成因和转化路径，通过皮尔逊相关系数法进行案例相似度计算，为未来的垃圾焚烧发电项目和其决策者提供数据支持和决策参考。
+						</p>
+					</div>
+
+					<div class="cntl-image"><img src="static/img/sjfx.jpg"></div>
+					<div class="cntl-icon cntl-center">'03</div>
+				</div>
+
+				<div class="cntl-state">
+					<div class="cntl-content">
+						<h3>阶段研究成果</h3>
+						<p>通过对互联网上垃圾焚烧发电“邻避”事件的调查研究和数据分析，可以得到三方面的阶段性研究成果。其一是建立了垃圾焚烧发电主题词表和对应的知识库，为后续相关研究提供了自然语言处理角度的切入点。其二是获得了基于科学数据的“邻避”成因和转化路径，为全局的研究提供数据基础。其三是孵化出了基于贝叶斯网络和皮尔逊相关系数矩阵的案例支持决策系统，可以为未来项目的决策者提供数据支持和决策参考。
+						</p>
+					</div>
+
+					<div class="cntl-image"><img src="static/img/cgjj.png"></div>
+					<div class="cntl-icon cntl-center">'04</div>
+				</div>
+
+				<!-- <div class="cntl-state">
+					<div class="cntl-content">
+						<h4>Title 5</h4>
+						<p>Nulla ut tellus eu ante dapibus euismod ut sit amet est. Sed posuere scelerisque turpis, in bibendum magna feugiat non. Pellentesque ac tincidunt nibh. Nunc congue eu augue eu placerat. Nullam congue ex diam, id tincidunt augue pellentesque ac. Phasellus ornare nulla tellus, suscipit finibus urna tincidunt non. Nunc fringilla consequat massa.
+						</p>
+					</div>
+
+					<div class="cntl-image"><img src="static/img/a4.png"></div>
+					<div class="cntl-icon cntl-center">'6</div>
+				</div> -->
+			</div>
+		</div>
+	
+	</div>
+	
+	<!-- <<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script> -->
+	<script src="static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="static/js/jquery.cntl.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(e){
+			$('.cntl').cntl({
+				revealbefore: 300,
+				anim_class: 'cntl-animate',
+				onreveal: function(e){
+					console.log(e);
+				}
+			});
+		});
+	</script>
+	 <script>
+        $(document).click(function(){
+            $('.nav-list').removeClass('open')
+        })
+        $('.nav-menu,.nav-list').click(function(e){e.stopPropagation()})
+        $('nav').find('.nav-menu').click(function(e){
+            $('.nav-list').toggleClass('open')
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>垃圾焚烧“邻避”危机转化决策支持平台</title>
+    <link rel="stylesheet" type="text/css" href="static/css/search-form.css">
+    <link href="static/css/bootstrap.min.css" rel='stylesheet' type="text/css">
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/demo.css"> -->
+    <link rel="stylesheet" type="text/css" href="static/css/iziModal.css">
+    <link rel="stylesheet" type="text/css" href="static/css/result_show.css">
+    <link rel="stylesheet" href="static/css/404.css" />
+    <link rel="stylesheet" href="static/css/zd-1.0.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/normalize.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/demo2.css" /> -->
+
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="static/css/component.css" />
+    <!-- <style>
+        html,body {
+            margin:0;
+            overflow:hidden;
+            width:100%;
+            height:100%;
+            background:black;
+            background:linear-gradient(to bottom,#000000 0%,#5788fe 100%);
+        }
+        .filter {
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            background:#fe5757;
+            animation:colorChange 30s ease-in-out infinite;
+            animation-fill-mode:both;
+            mix-blend-mode:overlay;
+        }
+        @keyframes colorChange {
+            0%,100% {
+            opacity:0;
+        }
+        50% {
+            opacity:.9;
+        }
+        }.landscape {
+            position:absolute;
+            bottom:0px;
+            left:0;
+            width:100%;
+            height:100%;
+            background-image:url('../img/xkbg.png');
+            background-size:1000px 250px;
+            background-repeat:repeat-x;
+            background-position:center bottom;
+        }
+    </style> -->
+</head>
+
+<body>
+    <nav>
+        <!-- logo -->
+        <div class="nav-logo">
+            <a href="search"><img src="static/img/small_logo.png" alt=""></a>
+            <a href="search" class="nav-title">I-SAID</a>
+        </div>
+    
+        <!-- 控制menu -->
+        <div class="nav-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    
+        <!-- 菜单 -->
+        <ul class="nav-list">
+            <!-- <li>
+                <a href="" class="active">首页<div class="carect"></div></a>
+                <ul class="menu">
+                    <li><a href="">不断学习</a></li>
+                    <li><a href="">不断进步</a></li>
+                </ul>
+            </li> -->
+            <li><a href="search" class="active">案例分析</a></li>
+            <li><a href="process">处理流程</a></li>
+            <li><a href="introduce2">项目介绍</a></li>
+        </ul>
+    </nav>
+    <div id="large-header" class="large-header">
+        <canvas id="demo-canvas"></canvas>
+    </div>
+    <!-- <div class="landscape"></div>
+    <div class="filter"></div>
+    <canvas id="canvas"></canvas> -->
+    <!-- <div class="container demo-1">
+        <div class="content">
+            
+            
+        </div>
+    </div> -->
+
+	<!-- <header class="htmleaf-header">
+		<h3>AI智能搜索： <span>获取相似案例</span></h1>	
+    </header> -->
+    <!-- <div class="platform_title">
+        <p>垃圾焚烧“邻避”危机转化决策支持平台</p>
+    </div> -->
+    <div id = "logo">
+        <img src="static/img/logo.png" width="100%">
+        <p>垃圾焚烧“邻避”危机转化决策支持平台</p>
+    </div>
+    <div class="example_btn">
+        <!-- <button class="trigger-default">功能示例</button> -->
+        <a href="" class="trigger-default" onclick="return false;"  id="example_btn_1">
+            <!-- <img class="trigger-default" src="static/img/测试用例.png" style="margin-left:1140px"> -->
+            <div class="example_btn_img1">
+
+            </div>
+        </a>
+        
+    </div>
+    <div class="example_btn" >
+        <!-- <button class="trigger-default">功能示例</button> -->
+        <a href="" class="trigger-default" onclick="return false;" id="example_btn_2">
+            <!-- <img class="trigger-default" src="static/img/测试用例.png" style="margin-left:1140px"> -->
+            <div class="example_btn_img2">
+
+            </div>
+        </a>
+        
+    </div>
+    <div id="modal-default" class="iziModal">
+        <!-- <button id="exp_search">使用该案例进行测试</button> -->
+        <div class="use_exp_btn">
+            <a href="" onclick="return false;">
+                <div class="exp_search">
+
+                </div>
+            </a>
+        </div>
+        <p id="search-example"></p>
+        <div class="use_exp_btn">
+            <a href="" onclick="return false;">
+                <div class="exp_search">
+
+                </div>
+            </a>
+        </div>
+    </div>
+    <P id="text_1" style="display:none">
+        2016年6月25日，湖北省仙桃市居民为抗议垃圾焚烧发电厂建设，走上街头。仙桃官方试图说服市民，建垃圾焚烧发电厂对仙桃市具有显著的经济效益、社会效益和环境效益。仙桃市生活垃圾焚烧发电厂（下称垃圾焚烧发电厂），其主要功能是消纳仙桃市区和周边乡镇的生活垃圾。项目位于仙桃市干河办事处郑仁口村。
+        抗议民众认为，仙桃市政府刻意隐瞒垃圾焚烧发电厂建设，从选址到招标和建设已超过两年，除官方在网上公示，更多居民无从知情。该垃圾焚烧发电厂在建设施工中也未打标语，其用途附近居民甚至都不知晓。仙桃市长周文霞曾亲自走到街头与抗议居民对话。然而最终，仙桃市人民政府新闻办公室不得不透过官方微博发布通告。
+        此前，这一项目被仙桃市政府全力推进。仙桃市人民政府披露的消息显示，这一垃圾焚烧项目已经开工建设两年，原本预计于2016年年底点火试烧。可以在仙桃市政府官网看到，仙桃市人民政府新闻办公室26日下午发布的最新通告为《关于停止“生活垃圾焚烧发电项目”的通告》。该通告称，26日12时，经市委市政府研究，决定停止“生活垃圾焚烧发电项目”。希望广大市民不信谣、不传谣、不围观、不采取过激行为，遵纪守法，共同维护仙桃大局稳定。据此前报道，26日上午，仙桃市人民政府官网先后发布两条消息称，仙桃市生活垃圾焚烧发电项目旨在解决市民的生活垃圾处置问题。部分群众对生活垃圾焚烧发电项目存在疑虑，为了消除疑虑、维护稳定，经项目工程建设指挥部研究并报市政府批准，该项目暂缓建设，待进一步评估论证、征求广大市民意见后再行决定。据了解，民众不满的主要是选择距离居住区太近，以及担心没有有效的机制可以监督焚烧厂按照规范运作。有人认为这是盲目的“邻避效应”在起作用，担心民众这样的抗议会导致几年后仙桃垃圾围城。这恐怕也是因为地方政府在这类化工项目的监管上总出问题，才令大家如此不放心，宁愿不要也不愿承担风险。实际上，将板子都打在“邻避问题”也根本无助于解决这类在中国已经越来越频出的冲突，强力的监管与对民众有效畅通投诉惩罚机制，才是破解难题的钥匙。否则，事情的结果，永远只会是双输。
+        据仙桃官方报道，引发这次事件的这一生活垃圾焚烧发电项目由香港绿色东方投资控股有限公司以BOT模式与仙桃市政府合作兴建，2013年8月获省发改委正式立项核准。2014年6月24日奠基。生活垃圾焚烧发电项目一期规模为一炉一机。即一条日处理500吨生活垃圾焚烧线；一台9MW汽轮发电机组。采用具有国际先进水平的机械炉排炉，配有设备完善的尾气处理工艺，保证尾气各项污染排放指标优于国家标准，其中二噁英排放指标达到欧盟Ⅱ标准。预计于2015年2月安装完工，5月正式投产运营发电。投产使用后，将推进城乡生活垃圾处理无害化，减量化和资源再利用，将有力保护城市环境，节约土地资源，促进仙桃经济社会可持续发展。
+        可是，就是这么一个“利国利民”的好事，老百姓却不买账！
+        就其原因，无非是即使技术过关，老百姓也根本不相信企业会真正在环保上花这个代价，也不相信相关部门会真正监管到位，食品安全该是不存在技术问题吧，为什么企业还是用地沟油、苏丹红、三聚氰胺？利益驱使；企业为什么敢这样？某些部门监管不到位！
+        有知名仙桃籍法学者说，每次回老家，一进仙桃城区范围的高速路段，一股恶臭扑鼻而来。刚开始以为是谁在车里放屁了，后来发现是仙桃化工区飘来的。他很感概，“谁在我的家乡放了一个臭屁，然后走了！”
+        这次仙桃事件，可能发端于垃圾焚烧发电项目，但发源于爱家园，故土情深，对这种群众性自发的邻避运动，既然垃圾处理技术过关，就应该要进行科普，让老百姓知情，重在沟通和协商，采取强硬手段似为不妥。
+        正如另一知名仙桃籍法学学者所言：垃圾焚烧厂之规划兹事体大，若有差池，受害者并非仅为普通群众、普通公务员，警察、当地领导也可能被殃及。硬性维稳，事件或暂时获得平息，但政府的公信力一定加倍流失。诚哉斯言。
+        湖北省纪委就此发布问责通报，因在事件中领导不力、工作失职，造成恶劣影响，湖北省委决定，免去仙桃市委书记冯云乔（副厅级）职务，终止其提拔任用程序。与此同时湖北省已问责干部300人，处分206人。为推进问责工作，湖北省研究制定了《党风廉政建设主体责任和监督责任追究暂行办法》和《行政问责办法》，目前正抓紧制定《中国共产党问责条例》实施办法。          
+    </P>
+
+    <p id="text_2" style="display:none">
+        1月24日，从上饶经开区获悉，上饶市垃圾焚烧发电项目已完成土地征收工作，比原计划提前20天完成厂区道路302.51余亩、厂区核心用地235.04余亩用地征收和清表工作。“作为基础保障的土地征迁工作，难度不小。”上饶市垃圾焚烧发电项目推进协调领导小组副组长郑强告诉记者，作为上饶市政府重点项目，该项目涉及周边6个自然村，12个村民小组，2400余人口，服务对象为中心城区、县城、乡镇、风景区的垃圾，建成后全年可处理垃圾量54.75万吨，年发电量可达2亿度，将有效提高我市生活垃圾处理的减量化、无害化和资源化水平。
+        项目选址在上饶经开区董团乡联胜村河源村小组。自2015年启动以来，由于部分群众对垃圾焚烧发电项目的不理解以及少数不法群众的串联挑拨，导致项目一直推而未动。去年11月，市委、市政府下决心实施这一民生工程、民心工程，于11月28日召开工作推进会，明确要求项目在2018年1月底开工建设，要求上饶经开区必须在1月28日前完成厂区道路和项目核心区征地工作。
+        “这一块‘硬骨头’，单靠乡里的力量难免力不从心。”上饶经开区上下联动、高位推动，成立了由区党工委书记张爱平任第一组长，区党工委副书记、管委会主任邵小亭任组长的项目推进协调领导小组，并在项目一线设立项目指挥部，下设土地房屋征收组、业务技术咨询组、群众工作宣传组、信访接待组、社会稳定处置组、宣传报道组六个工作组，从区机关、公安分局、董团乡抽调精兵强将，与联胜村、联合村两委和驻村扶贫工作队组建了近百名业务精、情况熟、能战斗的工作队伍，区、乡、村三级联动开展工作。
+        征迁工作任务重，压力大，如何使项目征迁在稳步中推进?“我们每周都会召开项目协调会，每天工作一汇总，抓好每一天，抓实每一周。有了领导驻点指挥，工作组同志发现问题后，能一线研究部署，一线协调解决，有力地推进各项工作开展。”据了解，该项目协调领导小组和百名指挥部成员进驻一线进行现场办公，变被动接招为主动服务，使得工作效率事半功倍。
+        百闻不如一见。为了消除村民疑虑，保障村民参与权、知情权和监督权，上饶经开区先后组织了5批次共计300余名村民代表赴江苏省常州市实地参观考察，外出参观考察人数超过项目核心区总户数的70%。通过实地考察，村民代表们对垃圾焚烧发电项目有了更科学和直观的认识，返程后村民代表主动现身说法，用现场照片和视频向身边人解释说明。宣传报道组随行工作人员用镜头和文字直观记录了当地的生态环境和村民生活，现场采访了当地群众和董团乡参观村民的切身体会，并通过微信、电视台、报纸各种平台宣传报道，营造了良好的舆论宣传氛围。
+        同时，项目协调领导小组将推进项目与精准扶贫相结合，想群众所想急群众所急，为群众办实事谋实利，完成入户道路硬化11.3万平方米、完成12412米排污水沟建设、拆除651户4.8万平方米危房、完成159户8220平方米危房维修、31户危房改造、264户旱厕改水冲厕，让群众得到实实在在的实惠，干部群众距离进一步拉近，切实提高群众对垃圾焚烧发电项目的支持率和满意率。
+        聚力征迁，合力攻坚。在土地征收中，上饶经开区坚持“一把尺子量到底、一个标准收到底”的原则，做到公开、公平、公正，并积极发挥当地党员的模范带头作用，快速和谐推进征迁工作。仅用30余天时间便完成了厂区道路302.51余亩、厂区核心用地235.04余亩用地征收和清表工作，比原计划提前20天完成土地征收任务，为上饶市垃圾焚烧发电项目的推进奠定了坚实的基础。
+        垃圾焚烧烟气主要污染物为烟尘、SO2、NOx、HCl、二f英等，项目采取“SNCR脱硝+半干式喷雾反应塔+Ca(OH)2干粉喷射+二级活性炭喷射+袋式除尘器”的净化处理工艺，净化后的烟气符合《生活垃圾焚烧污染控制标准》(GB18485-2014)中表4的生活垃圾焚烧炉排放烟气污染物排放限值要求，二f英排放浓度满足欧盟环境标准。本项目生产废水和生活污水经场内处理达到《生活垃圾填埋场污染控制标准》(GB16889-2008)表2标准后，经8.1km管道排入信江。项目焚烧飞灰固化后外运指定垃圾填埋场填埋，焚烧炉渣外运综合利用，并采取隔声减噪措施消减生产噪声。项目实施后可有效实现上饶市生活垃圾的无害化、减量化和资源化，改善上饶市环境卫生。
+        环境空气：全年逐日气象条件下各敏感点各污染物最大日均浓度及预测网格范围内最大地面日平均浓度值均能满足执行准的要求。在长期气象条件下，预测网格范围内各污染物最大地面年平均浓度值均能满足执行标准的要求。无组织排放臭气预测结果表明，项目NH3、H2S最大地面小时浓度影响值及厂界的浓度值均能满足标准的要求。对环境空气环境影响较小。
+        地表水：项目正常情况下经过场内污水处理站后的废水经过“预处理系统+调节池+ UBF厌氧生物反应系统+ SBR好氧生物反应系统+MBR系统+超滤+纳滤+反渗透”工艺处理后达到《生活垃圾填埋场污染控制标准》(GB16889-2008)表2标准后，经8.1km管道排入信江，对附近地表水体的环境影响较小。
+        地下水：项目不使用地下水供水水源，经8.1km排污管道排入信江，项目设计和施工过程中对各类废水池池底池壁、固废临时贮存场所地面和垃圾卸料平台地面按要求防渗。经采取上述措施后，项目生产基本不会对区域地下水产生不利影响。
+        固体废弃物：炉渣由运输车外运综合利用。飞灰的经有机螯合剂稳定化工艺处理并符合《生活垃圾填埋场污染控制标准》(GB16889-2008)的要求后，送至垃圾填埋场指定区域安全填埋处置。本项目各类固体废物均得到了妥善处理，对外环境影响较小。
+        本项目建设符合产业结构调整指导目录(2011年本,2013年修正)、《上饶市环境卫生专项规划》、《上饶市城乡总体规划》，工程的选址、工艺、设备与《生活垃圾焚烧污染控制标准》(GB18485-2014)相符，也与包括《城市生活垃圾处理及污染防治技术政策》(建城[2000]120号)、《关于进一步加强生物质发电项目环境影响评价管理工作的通知》(国家环境保护总局以环发〔2008〕82号)、《城市环境卫生设施规划规范》(GB50337-2003)以及《城市生活垃圾焚烧处理工程项目建设标准》在内的垃圾处理技术政策相符，同时本项目属国家产业政策鼓励类项目，与国家产业政策及经营政策相符。
+        在采取了本环评提出的各项工程环保措施、风险控制措施及环境监督管理措施后，本项目对环境的影响可控制在相应的标准范围内，且不会对各环境保护目标构成污染影响，从环境保护的角度分析，上饶市生活垃圾焚烧发电厂项目的建设是可行的。
+        任何单位或个人若需要查询本工程环境影响报告书(公示稿)，可根据以上联系方式直接到建设单位或评价单位查阅;或以电子邮件及传真形式发送至评价单位，评价单位确认索取人为本项目利益相关的公众后，将通过电子邮件将报告书简本发送至索取人，自本公示发布之日起10日内，公众可通过上述联系地址，以电话或传真的方式发表对本工程建设及环评工作的意见和看法，并将公众的宝贵意见、建议向工程的建设单位、环评单位和有关部门反映。
+        项目经理助理林新和向记者介绍，根椐《国务院关于印发节能减排综合性工作方案的通知》，我国鼓励垃圾焚烧发电和供热、填埋气体发电，积极推进城乡垃圾无害化处理，实现垃圾减量化、资源化和无害化，垃圾焚烧发电不仅能达到国家环保排放标准，而且是垃圾减量化、资源化和无害化最有效的手段。此外，根椐上饶市人民政府常务会议精神，上饶市生活垃圾焚烧发电项目由市城市建设投资开发集团有限公司投资、建设、运营，该项目位于上饶市经开区董团乡联胜村，占地150亩，建设规模日处理生活垃圾1500吨，年发电量约2亿度，配3台日处理生活垃圾500吨机械炉排炉和2台  15MW汽轮发电机组，总投资约8.05亿元。
+        而在渗滤液处理上，垃圾在垃圾坑中发酵产生的渗滤液以及生产车间地面、设备及垃圾运输车辆冲洗等产生的污水，收集后排入渗滤液调节池内进行处理;处理合格的水回到工业水循环系统使用，浓液回喷炉膛燃烧，  实现污水零排放。
+        上饶市生活垃圾焚烧发电厂会对环境产生影响吗?林新和说，垃圾采用专用垃圾车运输，新建一条供生活垃圾运输专用道路进厂，避开居民区。堆放生活垃圾的垃圾坑是密闭的，且处于负压状态，臭气出不去，二f英在炉膛温度850℃时停留两秒就可以被全部分解，本项目焚烧炉炉膛温度在860℃—930℃，停留时间大于3秒，焚烧炉的炉温及生产过程中各种相关数据用专线上传环保网上，环保监督部门在电脑上随时都能查阅生产中环境监测相关数据。上饶市生活垃圾焚烧发电项目是上饶市民生工程，也是环保工程，垃圾处理技术与国家政策相符，同时该项目属国家产业政策鼓励类项目，与国家产业政策及经营政策相符。该项目各项工程环保措施、风险控制措施及环境监督管理措施，对环境的影响可控制在相应的标准范围内。上饶市生活垃圾焚烧发电厂环保排放标准不仅要达到国家环保标准，关键指标还要优于欧盟2000环保排放标准，且不会对各环境保护目标构成影响。从环保角度分析，此举可以节约填埋垃圾的土地资源，上饶市垃圾焚烧发电项目的建设是可行的。
+        4月7日，据市生活垃圾焚烧发电厂项目经理助理林新和介绍，根椐2007年5月23日发布的《国务院关于印发节能减排综合性工作方案的通知》，我国鼓励垃圾焚烧发电和供热、填埋气体发电，积极推进城乡垃圾无害化处理，实现垃圾减量化、资源化和无害化。“垃圾焚烧发电，既能够达到国家环保排放标准，又是垃圾减量化、资源化和无害化最有效的手段。”林新和说。
+        目前，随着经济快速发展和人口迅速增长，上饶市城市生活垃圾大幅增加，市委、市政府高度重视生活垃圾处理工作。根椐市政府常务会议精神，上饶市城市生活垃圾焚烧发电项目由市城市建设投资开发集团有限公司投资、建设、运营。目前，项目已完成《环评编制报告》，预计将在2019年建成投产。
+        据介绍，该项目设在市经开区董团乡联胜村，占地150亩，建设规模日处理生活垃圾1500吨，总投资约8.05亿元。项目配3台日处理生活垃圾500吨机械炉排炉和2台15MW汽轮发电机组，正式建成运行后，年发电量可达2亿度。
+        那么，在焚烧垃圾的过程中，排放出的二f英、粉尘等污染物会不会对空气、水体、土壤造成污染呢?对此，林新和告诉记者，垃圾焚烧发电厂落成后，为确保不影响周边环境，厂区将配套建设污水处理站，污水处理合格后再循环使用。而对于处理焚烧垃圾产生的烟气，焚烧发电厂将采用“SNCR”(无催化还原脱氮)+半干法(高速旋转雾化反应器)+干法(小苏打)活性炭喷射+布袋除尘器烟气处理工艺，将有效地解决焚烧垃圾带来的副作用。以处理飞灰方面为例，旋转喷雾塔和布袋除尘器收集的飞灰，加入一定比例的水泥、螯合剂充分搅拌致固化达标后，统一运输到指定卫生填埋专区进行填理。处理后，污染物将不会对周围环境造成影响。
+        林新和告诉记者，虽然在常温下燃烧垃圾会产生大量的二f英，但在炉膛温度850℃停留二秒以上时就可以将二f英几乎全部分解。焚烧发电厂发电项目采用的是机械炉排炉，炉膛温度在860℃-930℃，能保证99%以上的二f英分解成非二f英类物质，再通过脱硝、脱硫、活性炭吸附，实现达标排放。
+        在渗滤液处理方面，垃圾在垃圾坑中发酵产生的渗滤液以及生产车间地面、设备及垃圾运输车辆冲洗等产生的污水，收集后排入渗滤液调节池内进行处理。处理合格的水排回工业水循环系统使用，浓液送入回喷炉膛燃烧。焚烧后，炉渣则作为建筑材料再循环使用，实现污水零排放。
+        生活垃圾焚烧发电厂建成后，对周边居民区是否会产生影响?记者了解到，市生活垃圾焚烧发电厂的生活垃圾将采用专用垃圾车运输，并将新建一条供生活垃圾运输的专用道路，避开居民区。垃圾被运进厂后，堆放垃圾的垃圾坑是密闭的，且处于负压状态，臭气出不去，确保厂区整洁卫生，附近的居民区不受到影响。
+        据了解，该项目在今后正式运行时，环保监督部门会通过计算机实时查阅生产中环境监测的相关数据。“市生活垃圾焚烧发电项目，是一项民生工程、环保工程，既可以节约填埋垃圾的土地资源，又可以产生资源。”林新和表示，项目各项环保措施、风险控制措施及环境监督管理措施，对环境的影响可控制在相应的标准范围内。环保排放标准不仅要达到国家环保标准，关键指标还要优于欧盟2000环保排放标准，且不会对各环境保护目标构成影响。
+        ，在日后的运行过程中，会排放出二f英等污染物，对周边居民的日常生活带来影响。那么，垃圾焚烧发电厂到底会不会对上饶环境产生影响呢?4月20日，本报记者采访了上饶市生活垃圾焚烧发电厂项目的负责人，专门就市民关心的十个问题进行了详细解答。
+        答：九十年代以前城市生活垃圾随意往郊区的空地堆放，下雨时垃圾渗滤液四溢，严重地污染有限的地表、地下水资源。集中堆放生活垃圾发酵产生的臭气，影响周围居民的生活环境。把生活垃圾简单的焚烧，未经处理的烟气和粉尘污染了空气和环境，城市也就被生活垃圾包围了。九十年代后，全国各县、地市、省会城市都相继新建生活垃圾卫生填埋场来处理生活垃圾。
+        随着城市建设社会经济快速发展和人口迅速增长，城市生活垃圾大幅增加，同时农村生活垃圾清理政策推进及收运体系日益完善,生活垃圾主要依靠卫生填埋，占用了较多宝贵的土地资源。在这种情况下，国家相继出台了相关政策 、规定。根据《国务院关于印发节能减排综合性工作方案的通知》国发[2007]15号，鼓励垃圾焚烧发电和供热、填埋气体发电，积极推进城乡垃圾无害化处理，实现垃圾减量化、资源化和无害化，垃圾焚烧发电不仅能达到国家环保排放标准，而且是垃圾减量化、资源化和无害化最有效的手段。今后垃圾处理的方式将是以焚烧为主，填埋为辅的方向。
+        答：上饶市生活垃圾焚烧发电项目位于上饶市经开区董团乡联胜村，占地150亩，本项目处理生活垃圾的规模为1500吨/天，全年处理垃圾量54.75万吨;采用3条焚烧线，具体配置为3台500t/d机械焚烧炉配2台15MW冷凝式汽轮发电机组;烟气净化方案采用“SNCR+半干法+活性炭吸附+布袋除尘器”的烟气净化工艺，烟气排放指标达到《生活垃圾焚烧污染控制标准》GB18485-2014的要求，关键指标优于欧盟2000环保排放标准。渗滤液处理站规模300m3/d，工业废水处理站规模300t/d。垃圾渗滤液、冲洗水、生活污水及洗烟废水于站内处理后全部回用，不外排。垃圾焚烧每年产生炉渣约(湿渣计)8.88万吨，运到厂外进行资源综合利用处理(制砖等);每年产生飞灰约2.16万吨，在厂内的飞灰固化车间经螯合固化处理后送至填埋场专用区域进行安全填埋处置。估算建设总投资为80523万元。
+    </p>
+    <div id="modal-exp" class="iziModal"></div>
+	<section class="container">
+		<form onsubmit="submitFn(this, event);">
+            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input type="text" class="search-input" placeholder="AI智能搜索：获取相似案例" />
+                    <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+                    <!-- <li><a href="ajaxPost" class="trigger-iframe">Iframe</a></li> -->
+                </div>
+                <span class="close" onclick="searchToggle(this, event);"></span>
+                <div class="result-container">
+
+                </div>
+                <div id="modal-large" class="iziModal">
+                    <!-- <a name="top"></a> -->
+                    <div id="404" style="display:none">
+                        <div class="code">
+                            <p>找不到相似案例诶(T_T)</p>
+                        </div>
+                        <div class="road">
+                            <div class="shadow">
+                                <div class="shelt">
+                                    <div class="head">
+                                        <div class="eyes">
+                                            <div class="lefteye">
+                                                <div class="eyeball"></div>
+                                                <div class="eyebrow"></div>
+                                            </div>
+                                            <div class="righteye">
+                                                <div class="eyeball"></div>
+                                                <div class="eyebrow"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hat"></div>
+                                <div class="bubble">
+                                    <a href="search">换段文本试试？</a>
+                                </div>
+                            </div>
+                            <p><a href="search">Change The Text</a></p>
+                        </div>
+                    </div>
+                    <div id = "content" style="display:none">
+                       
+                        <div id="content_top">
+                            <div id="content_top_left" style="display:none">
+                                <div id="caculate_result">
+                                    <p class="content_title">搜索案例相似度计算结果</p>
+                                    <p id="sim_A"></p>
+                                    <p id="sim_B"></p>
+                                    <p id="sim_C"></p>
+                                    <p id="sim_D"></p>
+                                    <p id="max_sim"></p>
+                                </div>                              
+                            </div>
+                            <div id="content_top_mid">
+                                <div id="content_top_mid_imgBox">
+
+                                </div>
+                            </div id="content_top_right">
+                                <p style="float: left;margin-left: 20%;">搜索文本</p>
+                                <textarea id="textareaValue" style='max-height: 300px; height:240px; width: 360px;resize: none;margin-left:8%;'>
+                                    
+                                </textarea>
+                            </div>
+                        </div>
+                        <div id="content_midTop" style="display:none">
+                            <div id="content_midTop_table">
+                                <table border="1" cellspacing="0">
+                                    <tr>
+                                        <th colspan="21" style="text-align:center">关键词权重表</th>
+                                    </tr>
+                                    <tr id = "File_Name">
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr id="A">
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr id="B">
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr id="C">
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr id="D">
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr id ="file_name">
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td><td></td><td></td><td></td><td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="content_mid">
+                            <div id="content_mid_left">
+                                <p id="title" style="font-size:16px;font-weight:600;"></p>
+                                <p id="text_content"></p>
+                            </div>
+                            <div id="content_mid_right" style="display:none">
+                                <img src="static/img/key_rel.jpg" width="400px">
+                            </div>
+                        </div>
+                        <div id="bayes_title" style="display:none;">
+                            <p id="bayes_word">贝叶斯转化路径：</p>
+                        </div>    
+                        <div id="content_mid_bottom">
+                            <div id="img_left">
+                                <img src="">
+                            </div>
+                            <div id="img_mid">
+                                <img src="">
+                            </div>
+                            <div id="img_right">
+                                <img src="">
+                            </div>
+                        </div>
+                
+                        <div id="content_bottom">
+                            <p class = "order_str"></p>
+                        </div>
+
+                        <div id="content_mid_bottom_BCD_top" style="display:none;">
+                            <div id="content_mid_bottom_BCD_img_top">
+                                <img src="">
+                            </div>
+                            <div id="content_mid_bottom_BCD_desc_top">
+                                <p class = "order_str"></p>
+                            </div>
+                            <div id="content_mid_bottom_BCD_suggest_top">
+                                <p class="content_mid_bottom_BCD_suggest_fix">针对建议：</p>
+                                <p id="content_mid_bottom_BCD_suggest_top_1" style="text-indent:2em;"></p>
+                            </div>
+                        </div>
+
+                        <div id="content_mid_bottom_BCD_mid" style="display:none;">
+                            <div id="content_mid_bottom_BCD_img_mid">
+                                <img src="">
+                            </div>
+                            <div id="content_mid_bottom_BCD_desc_mid">
+                                <p class = "order_str"></p>
+                            </div>
+                            <div id="content_mid_bottom_BCD_suggest_mid">
+                                <p class="content_mid_bottom_BCD_suggest_fix">针对建议：</p>
+                                <p id="content_mid_bottom_BCD_suggest_top_2" style="text-indent:2em;"></p>
+                            </div>
+                        </div>
+
+                        <div id="content_mid_bottom_BCD_bottom" style="display:none;">
+                            <div id="content_mid_bottom_BCD_img_bottom">
+                                <img src="">
+                            </div>
+                            <div id="content_mid_bottom_BCD_desc_bottom">
+                                <p class = "order_str"></p>
+                            </div>
+                            <div id="content_mid_bottom_BCD_suggest_bottom">
+                                <p class="content_mid_bottom_BCD_suggest_fix">针对建议：</p>
+                                <p id="content_mid_bottom_BCD_suggest_top_3" style="text-indent:2em;"></p>
+                            </div>
+                        </div>
+
+                        <div id="content_bottom_bottom" style="display:none;">
+                            <p class="content_bottom_bottom_title" style="text-indent:0em;">原理解释：</p>
+                            <p id="content_bottom_bottom_explain">贝叶斯网络是基于概率的网络，其目的是解决不确定性问题和不完整性问题，对于解决复杂事件不确定性和关联性导致的故障具有很大优势。 “邻避”事件由于涉及人员广，突发性强， “邻避”事件可能的发展情况千变万化，具有非常高的不确定性，因此非常适合贝叶斯路径演化转变。</p>
+                            <p>本系统对“邻避”事件进行综合分析，提出建议。首先进行事件归类，获得该事件隶属的类别；然后对该类事件进行贝叶斯路径演化获得贝叶斯决策演化路径，并与最优贝叶斯演化路径进行比较，借助专家经验和树相似度计算，调整贝叶斯决策结构与参数，使其贝叶斯演化路径与最优演化路径相似度最大化。贝叶斯网络父节点代表原因，子节点表示结果，父子节点直接相连表示这两个事件的概率相关度较大。 通过与最优贝叶斯网络比较，缩进事件所在类贝叶斯演化网络中相距较远但在最优贝叶斯网络中相距较近的节点，扩大事件所在类贝叶斯演化网络中相距较近但在最优贝叶斯网络中相距较远的节点，使得该事件所在类贝叶斯网络与最优贝叶斯网络树相似度最大化。例如，在A类（最优）贝叶斯网络中节点GO（政府）和SS（选址）直接相连，相关度较高，但是C类案例（最差）贝叶斯网络节点GO和SS相距较远，相关度较低，表示政府在选址这一块工作欠缺，尚待提高，因此决策建议为政府加强在选址方面的工作力度，建立科学合理的选址制度，对选址地周边的居民提供多元化的补偿。借助这种方式，我们为B，C，D类的所有的贝叶斯演化路径提供了决策建议，希望能够为决策者提供一套全面、体系化的“邻避”事件解决方案。</p>
+                        </div>
+
+                        <!-- <a href="#top" id="to_top">返回顶部</a> -->
+
+                    </div>
+                </div>
+            </div>
+        </form>
+	</section>
+	
+    <!-- <script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script> -->
+    <script src="static/js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="static/js/iziModal.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            $(".search-wrapper").attr("class","search-wrapper active");
+        }
+    </script>
+    <script type="text/javascript">
+        $("#example_btn_1").click(function(){
+            $("#search-example").text($("#text_1").text());
+        });
+
+         $("#example_btn_2").click(function(){
+            $("#search-example").text($("#text_2").text());
+        });
+
+    </script>
+    <script type="text/javascript">
+
+        $("#modal-default").iziModal({
+	        title: "案例示例",
+	        subtitle: "进行AI分析的案例示例",
+	        iconClass: 'icon-announcement',
+	        width: 700,
+	        padding: 20
+	    });
+	    $(document).on('click', '.trigger-default', function (event) {
+	        event.preventDefault();
+	        $('#modal-default').iziModal('open');
+	    });
+
+	    $("#modal-large").iziModal({
+	        title: "垃圾焚烧“邻避”事件案例AI分析",
+	        subtitle: "基于NLP处理、皮尔逊算法、贝叶斯网络模型、机器学习等理论基础",
+	        iconClass: 'icon-chat',
+	        overlayColor: 'rgba(255, 255, 255, 0.4)',
+	        headerColor: '#334c7b',
+	        iconColor: '#00ffba',
+	        width: 1200,
+	        padding: 20
+	    });
+	    $(document).on('click', '.trigger-large', function (event) {
+	        event.preventDefault();
+	        $('#modal-large').iziModal('open');
+	    });
+
+	</script>
+	<script type="text/javascript">
+        function searchToggle(obj, evt){
+            var container = $(obj).closest('.search-wrapper');
+
+            if(!container.hasClass('active')){
+                  container.addClass('active');
+                  evt.preventDefault();
+            }
+            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+                  container.removeClass('active');
+                  // clear input
+                  container.find('.search-input').val('');
+                  // clear and hide result container when we press close
+                  container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+            }
+        }
+
+        $("#search").click(function(){
+            window.location.href = "ajaxPost"
+        })
+
+        function submitFn(obj, evt){
+           
+            value = $(obj).find('.search-input').val().trim();
+            
+            $(obj).find('.search-icon').attr("class","search-icon trigger-large");   
+            // 阻止元素发生默认的行为      
+            evt.preventDefault();
+        }
+
+        $(".search-icon").click(function(){
+            // $(".search-icon").attr("class","search-icon trigger-large");
+            console.log($(this).attr("class"));
+            var data = {
+                    "key_string": $(".search-input").val(),
+            };
+            // console.log($(".search-input").val());
+            if($(this).attr("class") == "search-icon trigger-large"){
+                ajaxRequestPostType("http://127.0.0.1:8086/ajax_search", 'POST', data)
+                // ajaxRequestPostType("http://www.baiwt.cn:80/ajax_search", 'POST', data)
+            }
+        })
+
+        $(".exp_search").click(function(){
+            var text = $("#search-example").text();
+            // $(".search-input").attr("value",text);
+            $(".search-input").val(text);
+            // console.log($(".search-input").val());
+            // $(".iziModal-button-close").click();
+            // $(".search-icon").click();
+            $(".search-icon").click();
+            $(".search-icon").click();
+        })
+
+        $(".iziModal-button-close").click(function(){
+            setDisplay("content","none");
+            setDisplay("content_mid","none");
+            setDisplay("content_mid_bottom","none");
+            setDisplay("content_midTop","none");
+            setDisplay("bayes_title","none");
+            setDisplay("content_bottom","none");
+            setDisplay("content_mid_bottom_BCD_top","none");
+            setDisplay("content_mid_bottom_BCD_mid","none");
+            setDisplay("content_mid_bottom_BCD_bottom","none");
+            setDisplay("content_bottom_bottom","none");
+        })
+
+        $(".close").click(function(){
+            $(".search-icon").attr("class","search-icon");
+            $(".search-input").val("");
+            // console.log($(".search-input").attr("value"));
+        })
+    </script>
+     <script type="text/javascript">
+
+        function ajaxRequestGet(uri) {
+            $.ajax({
+                url : uri,
+                type : "get",
+                contentType : 'application/json',
+                dataType : '',
+                success : function(response) {
+                    console.log(response);
+                    alert(response)
+                },
+                error : function() {
+                    console.log('Ajax请求失败！');
+                }
+            });
+        }
+
+        function getAccessToken(uri, method){
+            $.ajax({
+                type : method,
+                contentType : 'application/json;charset=gbk',
+                dataType : 'jsonp',
+                url : uri,
+                beforeSend: function(xhr) {
+                    console.log(data);
+                },
+                success : function(response) {
+                    console.log(response);
+                },
+                error : function() {
+                    console.log('Ajax请求失败！');
+                }
+            })
+            .done(function(res){
+                var accessToken = res.data;
+            })
+        }
+        
+        // POST类请求
+        function ajaxRequestPostType(uri, method, ori_data) {
+            //alert("${API_Path }/" + uri);
+            $.ajax({
+                type : method,
+                contentType : 'application/json;charset=utf-8',
+                // dataType : 'jsonp',
+                datatype:'json',
+                data : JSON.stringify(ori_data),
+                url : uri,
+                beforeSend: function(xhr) {
+                    // xhr.setRequestHeader("Access-Control-Allow-Headers","origin, content-type, accept, authorization"),
+                    // xhr.setRequestHeader('Access-Control-Allow-Origin', '*'),
+                    // xhr.setRequestHeader("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE")
+                    
+                    setDisplay("content","none");
+                    setDisplay("content_mid","none");
+                    setDisplay("content_mid_bottom","none");
+                    setDisplay("content_midTop","none");
+                    setDisplay("content_bottom","none");
+                    setDisplay("404","none");
+                    console.log(ori_data);
+                },
+                complete: function(){
+                    
+                },
+                // headers: {
+                //     // 'Access-Token':$.cookie('access_token'),
+                //     'Access-Control-Allow-Origin':'*',
+                //     'Access-Control-Allow-Methods':'POST,GET,PUT,DELETE'
+                //  },
+                success : function(response) {
+                    
+                    console.log(response);
+                    // alert(response);
+                    var data = eval("(" + response + ")");
+                    // alert(data.format_dict);
+                    
+                    if(data.status_code == '404' || data.sim_dict.max_sim == '--'){
+                        
+                        setDisplay("content","none");
+                        setDisplay("content_mid","none");
+                        setDisplay("bayes_title","none");
+                        setDisplay("content_mid_bottom","none");
+                        setDisplay("content_midTop","none");
+                        setDisplay("content_bottom","none");
+                        setDisplay("content_bottom_bottom","none");
+                        
+                        setTimeout(setDisplay("404","block"),3000);
+
+                        // setDisplay("404","block");
+                    }else if(data.sim_dict.max_sim != "--" && data.status_code == '200'){
+                        setDisplay("content_top_left","block");
+                        setDisplay("content","block");
+                        setDisplay("content_mid","block");
+                        setDisplay("content_mid_bottom","block");
+                        setDisplay("content_midTop","block");
+                        setDisplay("content_bottom","block");
+                        
+                        $("#textareaValue").text($(".search-input").val());
+
+                        //20个关键词显示
+                        var File_Name_Values = data.format_dict.File_Name.split("-");
+                        File_Name_Values[0] = '关键词';
+                        $('#File_Name').children('td').each(function(j){  // 遍历 tr 的各个 td
+                            $(this).text(File_Name_Values[j]);
+                        });   
+                        
+                        //A类显示
+                        var A_Values = data.format_dict.A.split("-");
+                        A_Values[0] = 'A';
+                        $('#A').children('td').each(function(j){  // 遍历 tr 的各个 td
+                            $(this).text(A_Values[j]);
+                        });
+
+                        //B类显示
+                        var B_Values = data.format_dict.B.split("-");
+                        B_Values[0] = 'B';
+                        $('#B').children('td').each(function(j){  // 遍历 tr 的各个 td
+                            $(this).text(B_Values[j]);
+                        });
+
+                        //C类显示
+                        var C_Values = data.format_dict.C.split("-");
+                        C_Values[0] = 'C';
+                        $('#C').children('td').each(function(j){  // 遍历 tr 的各个 td
+                            $(this).text(C_Values[j]);
+                        });
+
+                        //D类显示
+                        var D_Values = data.format_dict.D.split("-");
+                        D_Values[0] = 'D';
+                        $('#D').children('td').each(function(j){  // 遍历 tr 的各个 td
+                            $(this).text(D_Values[j]);
+                        });
+
+                        //新案例分析数据显示
+                        var file_name_Values = data.format_dict.file_name.split("-");
+                        file_name_Values[0] = '搜索文本';
+                        $('#file_name').children('td').each(function(j){  // 遍历 tr 的各个 td
+                            $(this).text(file_name_Values[j]);
+                        });
+
+                        //相似度分析显示
+                        // $("#str_name_key").text("str_name");
+                        // $("#sim_A_key").text("sim_A");
+                        // $("#sim_B_key").text("sim_B");
+                        // $("#sim_C_key").text("sim_C");
+                        // $("#sim_D_key").text("sim_D");
+                        // $("#max_sim_key").text("max_sim");
+
+                        // $("#str_name_value").text(data.sim_dict.str_name);
+                        // $("#sim_A_value").text(data.sim_dict.sim_A);
+                        // $("#sim_B_value").text(data.sim_dict.sim_B);
+                        // $("#sim_C_value").text(data.sim_dict.sim_C);
+                        // $("#sim_D_value").text(data.sim_dict.sim_D);
+                        // $("#max_sim_value").text(data.sim_dict.max_sim);
+
+                        // 设置关键词关系图1秒后显示
+                        setTimeout(setDisplay("content_mid_right","inline"),1000);
+
+                        if(data.sim_dict.max_sim == 'A'){
+                            //案例显示
+                            $("#title").text("典型相似案例：佛山南海案例");
+                            // setDisplay("top_bottom_mid","inline");
+                            $("#content_top_mid_imgBox").html("<img src='static/img/名利_A.jpg'>")
+                        }else if(data.sim_dict.max_sim == 'B'){
+                            //案例显示
+                            $("#title").text("典型相似案例：广州花都案例");
+                            // setDisplay("top_bottom_mid","inline");
+                            $("#content_top_mid_imgBox").html("<img src='static/img/名利_B.jpg'>")
+                        }else if(data.sim_dict.max_sim == 'C'){
+                            //案例显示
+                            $("#title").text("典型相似案例：天津蓟县案例");
+                            // setDisplay("top_bottom_mid","inline");
+                            $("#content_top_mid_imgBox").html("<img src='static/img/名利_C.jpg'>")
+                        }else if(data.sim_dict.max_sim == 'D'){
+                            //案例显示
+                            $("#title").text("典型相似案例：武汉锅顶山案例");
+                            // setDisplay("top_bottom_mid","inline");
+                            $("#content_top_mid_imgBox").html("<img src='static/img/名利_D.jpg'>")
+                        }else{
+                            // setDisplay("top_bottom_mid","none");
+                        }
+                        
+                        // $("#simple_caculate").text("str_name : " + data.sim_dict.str_name + ", sim_A : " + data.sim_dict.sim_A + ", sim_B : " + data.sim_dict.sim_B + ", sim_C : " + data.sim_dict.sim_C + ", sim_D : " + data.sim_dict.sim_D + ", max_sim : " + data.sim_dict.max_sim);
+
+                        $("#str_name").text("str_name : " + data.sim_dict.str_name);
+                        $("#sim_A").text("A（名利双收） : " + data.sim_dict.sim_A);
+                        $("#sim_B").text("B（得名失利） : " + data.sim_dict.sim_B);
+                        $("#sim_C").text("C（失名失利） : " + data.sim_dict.sim_C);
+                        $("#sim_D").text("D（失名得利） : " + data.sim_dict.sim_D);
+                        $("#max_sim").text("最相似案例 : " + data.sim_dict.max_sim);
+
+                        // //案例显示
+                        // $("#title").text("case_description");
+                        $("#text_content").text(data.case_description);
+
+                        $("#bayes_word").text("贝叶斯结构：");
+
+                        //图片显示
+                        // $("#img_left img").attr("src","/static/img/a1.png").attr("width","100px");
+                        if(data.sim_dict.max_sim == 'A'){
+                            $("#img_left img").attr("src",data.img_dict.pic_1).attr("width","300px");
+                            $("#img_mid img").attr("src",data.img_dict.pic_2).attr("width","300px");
+                            $("#img_right img").attr("src",data.img_dict.pic_3).attr("width","300px");
+
+                            //建议显示
+                            $(".order_str").text(data.order_str);
+                            setDisplay("bayes_title","block");
+                            setDisplay("content_bottom_bottom","block");
+                            setDisplay("content_mid_bottom_BCD_top","none");
+                            setDisplay("content_mid_bottom_BCD_mid","none");
+                            setDisplay("content_mid_bottom_BCD_bottom","none");
+                        }else{
+                            setDisplay("content_mid_bottom","none");
+                            setDisplay("content_bottom","none");
+                            setDisplay("bayes_title","block");
+                            $("#bayes_word").text("贝叶斯转化路径：");
+                            setDisplay("content_mid_bottom_BCD_top","block");
+                            setDisplay("content_mid_bottom_BCD_mid","block");
+                            setDisplay("content_mid_bottom_BCD_bottom","block");
+                            setDisplay("content_bottom_bottom","block");
+                            $("#content_mid_bottom_BCD_img_top img").attr("src",data.img_dict.pic_1);
+                            $("#content_mid_bottom_BCD_img_mid img").attr("src",data.img_dict.pic_2);
+                            $("#content_mid_bottom_BCD_img_bottom img").attr("src",data.img_dict.pic_3);
+                            $(".order_str").text(data.order_str);
+                            $("#content_mid_bottom_BCD_suggest_top_1").text(data.suggest_dict.sug_1);
+                            $("#content_mid_bottom_BCD_suggest_top_2").text(data.suggest_dict.sug_2);
+                            $("#content_mid_bottom_BCD_suggest_top_3").text(data.suggest_dict.sug_3);
+                        }
+                       
+                    }
+
+                    
+                },
+                error : function() {
+                   
+                    setDisplay("content","none");
+                    setDisplay("content_mid","none");
+                    setDisplay("bayes_title","none");
+                    setDisplay("content_mid_bottom","none");
+                    setDisplay("content_midTop","none");
+                    setDisplay("content_bottom","none");
+                    setDisplay("content_bottom_bottom","none");
+                        
+                    setTimeout(setDisplay("404","block"),3000);
+                    console.log('Ajax请求失败！');
+                }
+            });
+        }
+
+        
+        function setDisplay(boxId,value){
+            var box = document.getElementById(boxId);
+            box.style.display = value;
+        }
+
+        // $(function(){
+        //     $("#test").click(function(){
+        //         console.log("Start AJAX");
+        //         var data = {
+        //             "key_string": $("#text").val(),
+        //         };
+        //         // ajaxRequestGet("http://127.0.0.1:8888/test");
+        //         ajaxRequestPostType("http://127.0.0.1:8086/ajax_search", 'POST', data)
+        //     })
+            
+        // });
+     
+     </script>
+     <script type="text/javascript" src="static/js/404.js" ></script>
+     <script src='static/js/autosize.js'></script>
+     <script>
+        $(document).click(function(){
+            $('.nav-list').removeClass('open')
+        })
+        $('.nav-menu,.nav-list').click(function(e){e.stopPropagation()})
+        $('nav').find('.nav-menu').click(function(e){
+            $('.nav-list').toggleClass('open')
+        })
+    </script>
+    <!-- 背景粒子 -->
+    <script src="static/js/TweenLite.min.js"></script>
+    <script src="static/js/EasePack.min.js"></script>
+    <script src="static/js/rAF.js"></script>
+    <script src="static/js/demo-1.js"></script>
+    <!-- <script src="static/js/star_bg.js"></script> -->
+</body>
+</html>
